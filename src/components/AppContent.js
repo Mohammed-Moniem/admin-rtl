@@ -2,10 +2,7 @@ import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
 
-// routes config
-import routes from '../routes/routes'
-
-const AppContent = () => {
+const AppContent = ({ routes }) => {
   return (
     <CContainer lg>
       <Suspense fallback={<CSpinner color="primary" />}>
@@ -16,14 +13,14 @@ const AppContent = () => {
                 <Route
                   key={idx}
                   path={route.path}
-                  exact={route.exact}
+                  exact={true}
                   name={route.name}
                   element={<route.element />}
                 />
               )
             )
           })}
-          <Route path="/" element={<Navigate to="dashboard" replace />} />
+          {/* <Route path="/" element={<Navigate to="dashboard" replace />} /> */}
         </Routes>
       </Suspense>
     </CContainer>
